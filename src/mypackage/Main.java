@@ -32,15 +32,11 @@ public class Main {
 			System.out.println(b);
 		}
 		
-//		for (ListIterator<Bus> i = list.iterator(); i.hasNext();) {
-//			Bus item = i.next();
-//		    System.out.println(item);
-//		}
-		
 		for (ListIterator<Bus> i = list.iterator(); i.hasPrevious();) {
 			Bus item = i.previous();
 		    System.out.println(item);
 		}
+
 				
 	}
 

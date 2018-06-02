@@ -23,18 +23,27 @@ public class BusList implements Iterable<Bus> {
 	        @Override
 	        public Bus previous() {
 	        	Bus b = null;
-	        	if(hasPrevious()) {
+	        	if (hasPrevious()) {
 	        		top = top.prev;
 	        		b = top.b;
 	        	} 
 	        	return b;
 	        }
-
+	        
+//	        public Bus previous() {
+//	        	Bus b = null;
+//	        	if(hasPrevious()) {
+//	        		top = top.prev;
+//	        		if (top.prev != null)
+//	        			b = top.prev.b;
+//	        	} 
+//	        	return b;
+//	        }
+	        
 			@Override
 			public Bus next() {	
 				Bus b = top.b;
-				if(hasNext())
-					top = top.next;
+				if(hasNext()) top = top.next;
 				return b;
 			}
 
@@ -67,7 +76,8 @@ public class BusList implements Iterable<Bus> {
 
 			@Override
 			public void remove() {
-				
+				top.prev = top.prev.prev;
+				if (top.prev != null) top.prev.next = top;
 			}
 			
 	    };
