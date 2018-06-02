@@ -2,13 +2,13 @@ package mypackage;
 
 import java.util.ListIterator;
 
-public class BusList implements Iterable<Bus> {
+public class TrainList implements Iterable<Train> {
 	
 	private Node entry = new Node();
 	
 	@Override
-	public ListIterator<Bus> iterator() {
-	    return new ListIterator<Bus>() {
+	public ListIterator<Train> iterator() {
+	    return new ListIterator<Train>() {
 	    	
 	    	private Node head = entry;
 	    	
@@ -23,8 +23,8 @@ public class BusList implements Iterable<Bus> {
 	        }
 
 	        @Override
-	        public Bus previous() {
-	        	Bus b = null;
+	        public Train previous() {
+	        	Train b = null;
 	        	if (hasPrevious()) {
 	        		head = head.prev;
 	        		b = head.b;
@@ -33,8 +33,8 @@ public class BusList implements Iterable<Bus> {
 	        }
 	        
 			@Override
-			public Bus next() {	
-				Bus b = head.b;
+			public Train next() {	
+				Train b = head.b;
 				if(hasNext()) head = head.next;
 				return b;
 			}
@@ -50,12 +50,12 @@ public class BusList implements Iterable<Bus> {
 			}
 
 			@Override
-			public void set(Bus b) {
+			public void set(Train b) {
 				if (hasPrevious()) head.prev.b = b;
 			}
 
 			@Override
-			public void add(Bus b) {
+			public void add(Train b) {
 				Node n = new Node(b);
 				if (hasPrevious()) {
 					head.prev.next = n;
@@ -87,14 +87,14 @@ public class BusList implements Iterable<Bus> {
 	
 	public int size() {
 		int n = 0;
-		ListIterator<Bus> i = iterator(); 
+		ListIterator<Train> i = iterator(); 
 		for (; i.hasNext(); i.next()) n++;
 		return n;
 	}
 		
 	private class Node {
 		
-		private Bus b;
+		private Train b;
 		private Node next;
 		private Node prev;
 		
@@ -104,7 +104,7 @@ public class BusList implements Iterable<Bus> {
 			this.prev = null;
 		}
 		
-		Node(Bus b) {
+		Node(Train b) {
 			this.b = b;
 			this.next = null;
 			this.prev = null;
